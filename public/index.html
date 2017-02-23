@@ -1,23 +1,123 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="GitLab Pages">
-    <title>Plain HTML site using GitLab Pages</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="navbar">
-      <a href="https://pages.gitlab.io/plain-html/">Plain HTML Example</a>
-      <a href="https://gitlab.com/pages/plain-html/">Repository</a>
-      <a href="https://gitlab.com/pages/">Other Examples</a>
-    </div>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ReactiveX</title>
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
-    <h1>Hello World!</h1>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/solarized-light.min.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-    <p>
-      This is a simple plain-HTML website on GitLab Pages, without any fancy static site generator.
-    </p>
-  </body>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Reactive Extensions</h1>
+				<h2>RxJava</h2>
+			</section>
+
+			<!-- Java 8 -->
+			<section>
+				<section>
+					<h1>Lambda</h1>
+					<ul>
+						<li>une lambda</li>
+						<li>une référence de fonction</li>
+						<li>interface fonctionnelle</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>API Stream</h1>
+					Un stream est un flot d'objects sur le quel on applique des traitements.
+					API fluent inspirée des langages fonctionnels.
+				</section>
+			</section>
+
+			<!-- CODE -->
+
+			<section>
+				<section>
+					<h2>Programmation réactive</h2>
+					<p>Paradigme consistant à modéliser un traitement comme un flot d'évènements modifiant l'état du système</p>
+
+					<ul>
+						<li>Orienté message : chaque évènement est un nouveau message reçu</li>
+						<li>Asynchrone : les modifications peuvent produire de nouveaux évènements</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Objectifs</h2>
+					<ul>
+						<li>Scalabilité</li>
+						<li>Robustesse/tolérence aux pannes</li>
+						<li>Maintenabilité</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>io.reactivex.Observable</h2>
+						<p class="fragment fade-up">patron de conception : itérateur et observer</p>
+						<p class="fragment fade-down">composition des traitements (comme avec les Stream)</p>
+						<p class="fragment fade-right">asynchrone au besoin</p>
+					</section>
+
+					<section>
+						<h2>Pattern observer</h2>
+						<img src="img/observer.png" />
+					</section>
+
+					<section>
+						<h2>Classe principales</h2>
+						<ul>
+							<li><code>Observable</code> au quel on souscrit</li>
+							<li><code>Subscriber</code> object qui souscrit à l'Observable
+								<ul>
+									<li><code>onSubscribe()</code></li>
+									<li><code>onNext()</code></li>
+									<li><code>onCompleted()</code></li>
+									<li><code>onError()</code></li>
+								</ul>
+							</li>
+							<li>Subscription permet de gérer les sousscription</li>
+						</ul>
+					</section>
+				</section>
+			</section>
+
+			<section data-background="img/fuck.jpg" data-background-size="contain">
+				<h1>Talk is cheap!</h1>
+				<h2>Show me the code!</h2>
+			</section>
+
+			<section>
+				<h2>Intérêts</h2>
+				<ul>
+					<li class="fragment fade-down">composition des traitements</li><!-- exemple de google -->
+					<li class="fragment fade-up">testabilité</li>
+					<li class="fragment fade-right">lisibilité (quand c'est bien fait !)</li>
+					<li class="fragment fade-left">scalabilité</li>
+					<li class="fragment fade-up">monitorabilité</li>
+				</ul>
+			</section>
+
+			<section>
+				<img src="img/early_adopter.jpg" />
+			</section>
+		</div>
+	</div>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// Required, even if empty.
+		Reveal.initialize({
+		});
+	</script>
+</body>
 </html>
-
