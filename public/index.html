@@ -92,18 +92,34 @@
 				</section>
 
                 <section data-transition="fade-in slide-out">
-					<h2>Jenkins 2.0<span class="fragment"><i> - revolution !</i></span></h2>
-					<div class="fragment">
-                        <p style="color:yellow">Pipeline as code</p>
-                        <img  class="fragment" src="img/jenkins-pipeline.jpg" width="60%">
-                        <!-- Helps Michel !! -->
-                    </div>
-                    <aside class="notes">Pipeline is future !</aside>
-				</section>
-                <section>
                     <h2>Jenkins 2.0</h2>
-                    <p class="fragment" style="color:yellow">New interface</p>
+                    <p style="color:yellow">New interface</p>
                     <img class="fragment" src="img/jenkins-interface.png" width="100%"/>
+                </section>
+
+                <section data-transition="fade-in slide-out">
+                    <h2>Jenkins 2.0</h2>
+                    <p style="color:yellow">Jenkins pipeline</p>
+					<pre class="fragment"><code data-trim data-noescape>node {
+    stage('Checkout') {
+        updateGitlabCommitStatus name: 'Checkout', state: 'running'
+        checkout changelog: true, poll: true, scm: [
+            $class: 'GitSCM',
+            branches: [[name: "${BRANCH_NAME}"]]
+        ]
+    }
+    stage('Build') {
+        withMaven(maven:'Maven') {
+            sh "mvn package"
+        }
+        archiveArtifacts 'target/mediator-diagral-*.war'
+    }
+    stage('Test') {
+        withMaven(maven:'Maven') {
+            sh "mvn verify"
+        }
+    }
+}</code></pre>
                 </section>
 
                 <section>
@@ -196,7 +212,7 @@
 							<td>API</td><td>Reactive Stream</td><td>Future/RxJava</td>
 						</tr>
 						<tr>
-							<td>Microservices</td><td>1 projet = 1 programme</td><td>Forme simplifiée d'acteurs</td>
+							<td>Microservices</td><td>Création d'un service</td><td>Grappe de service</td>
 						</tr>
 						<tr>
 							<td>Structure</td><td>framework</td><td>ensemble de bibliothèques</td>
@@ -223,19 +239,22 @@
             <!-- Craftmanship -->
 			<section>
 				<section>
-					<h2>RabbitMQ</h2>
+					<h2>Craftmanship</h2>
+					<p>RabbitMQ</p>
 
 					<img class="stretch" src="img/amqp.png" />
 				</section>
 				<section>
-					<h2>Docker Swarm</h2>
+					<h2>Craftmanship</h2>
+					<p>Docker Swarm</p>
 
 					<img class="stretch" src="img/docker-swarm.png" />
 				</section>
 				<section>
-					<h2>Infinitspan</h2>
+					<h2>Craftmanship</h2>
+					<p>Infinitspan</p>
 
-					<img class="stretch" src="img/infinitspan.png" />
+					<img class="stretch" src="img/docker-swarm.png" />
 				</section>
             </section>
 
